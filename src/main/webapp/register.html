@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+    <link rel="stylesheet" href="static/css/bootstrap.css">
+    <script src="static/js/jquery-3.6.0.js"></script>
+    <script src="static/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="static/js/style.js"></script>
+</head>
+
+<body>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <a class="navbar-brand" href="index.html">
+        <img src="static/img/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+        Bookstore
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-expanded="false">
+                    <i style="color: tomato;" class="bi bi-geo-alt"></i>地址
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">中国大陆</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">河北</a>
+                    <a class="dropdown-item" href="#">北京</a>
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="login.html">登录 <span class="sr-only">(current)</span></a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register.html">注册 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <!-- <a class="nav-link" href="#">购物车 <span class="sr-only">(current)</span></a> -->
+                    <button class="btn btn-light my-2 my-sm-0" type="submit"><a style="text-decoration: none;"
+                                                                                href="#">购物车<small><span
+                            class="badge badge badge-pill badge-danger">4</span></small></a></button>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">后台 <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </form>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row clearfix">
+        <div id="div3" class="col-md-6 column">
+            <div class="">
+                <br>
+                <h1 class="display-4">Hello, Guys!</h1><br>
+                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
+                    attention to featured content or information.</p>
+                <hr class="my-4">
+                <p>It uses utility classes for typography and spacing to space content out within the larger
+                    container.</p>
+                <br>
+                <a class="btn btn-primary btn-lg" href="login.html" role="button">登录</a>
+            </div>
+        </div>
+        <div id="div5" class="col-md-6 column">
+            <form id="registerform" class="needs-validation" novalidate>
+                <div class="form-group">
+                    <label for="InputEmail1">Email address</label>
+                    <input type="email" name="email" class="form-control is-invalid" id="InputEmail1"
+                           aria-describedby="emailHelp" onfocus="alertShow(this)">
+                    <small id="emailHelp" class="alert alert-secondary form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="InputUsername">Username</label>
+                    <input type="username" name="username"  class="form-control is-valid" id="InputUsername"   onblur="isSave()" onfocus="alertShow(this)">
+                    <small id="usernameHelp" class="alert alert-secondary form-text text-muted ">你可以使用字母、数字,和下划线</small>
+
+                </div>
+                <div class="form-group">
+                    <label for="Password1">Password</label>
+                    <input type="password" name="password" class="form-control" id="Password1" onfocus="alertShow(this)" aria-describedby="passwordHelpBlock">
+                    <small id="passwordHelpBlock" class="form-text text-muted">
+                        您的密码长度必须为 8-20 个字符，包含字母和数字，并且不得包含空格、特殊字符或表情符号。
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="Password2">Confirm Password</label>
+                    <input type="password" name="regpassword" class="form-control" id="Password2" data-toggle="popover"
+                           title="提示" data-content="密码与第一次不匹配" onfocus="alertShow(this)">
+                    <small id="passwordHelp2" class="alert alert-secondary form-text text-muted">你可以使用字母、数字,和下划线</small>
+                </div>
+
+                <button id="submitbtn" type="submit" class="btn btn-primary">注册</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
