@@ -25,7 +25,7 @@ $(function () {
 function isSave() {
     $.get("AjaxServlet", {username: $("#InputUsername").val()}, function (isSave) {
         if (isSave) {
-            $("#InputUsername").addClass("border-danger").removeClass("border-success");
+            $("#InputUsername").addClass("border-danger is-invalid").removeClass("border-success is-valid");
             $("#usernameHelp").addClass("alert-danger ").removeClass("alert-success").html("用户名已存在");
         } else {
             $("#usernameHelp").addClass("alert-success").removeClass("alert-danger").html("用户名可用");
@@ -37,4 +37,5 @@ function alertShow(e) {
     console.log(e)
     $(".alert").hide();
     $(e).parent().find("small").show();
+    $(e).removeClass("is-invalid");
 }
