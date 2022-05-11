@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "AjaxServlet", value = "/AjaxServlet")
-public class AjaxServlet extends HttpServlet {
+public class RegisterAjaxServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.doPost(request, response);
@@ -34,5 +34,6 @@ public class AjaxServlet extends HttpServlet {
 
             }
         }
+
     }
 }
