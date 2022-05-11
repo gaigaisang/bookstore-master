@@ -14,26 +14,6 @@
 </head>
 
 <body>
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function() {
-        'use strict';
-        window.addEventListener('load', function() {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
-</script>
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <a class="navbar-brand" href="index.html">
         <img src="static/img/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -103,8 +83,11 @@
                     <label for="InputEmail1">Email address</label>
                     <input type="email" name="email" class="form-control " id="InputEmail1"
                            aria-describedby="emailHelp" onfocus="alertShow(this)">
-                    <small id="emailHelp" class="alert alert-secondary form-text text-muted">您可以使用任意邮箱，<footer
-                            class="blockquote-footer">如果为qq邮箱会默认使用改qq头像为初始头像 </footer></small>
+                    <small id="emailHelp" class="alert alert-secondary form-text text-muted">您可以使用任意邮箱，
+                        <footer
+                                class="blockquote-footer">如果为qq邮箱会默认使用改qq头像为初始头像
+                        </footer>
+                    </small>
                     <div class="invalid-feedback">
                         请输入正确的邮箱地址。
                     </div>

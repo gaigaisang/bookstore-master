@@ -22,7 +22,7 @@ $(function () {
 });
 
 function isSave() {
-    var usernamereg = /^[a-zA-Z0-9_]{5,20}$/;
+    var usernamereg = /^[a-zA-Z0-9]{5,20}$/;
     if (username.val()) {
         if (usernamereg.test(username.val())) {
 
@@ -32,16 +32,18 @@ function isSave() {
                     $("#InputUsername").removeClass("is-valid is-invalid");
                 } else {
                     $("#usernameHelp").addClass("alert-success").removeClass("alert-danger").html("用户名可用");
-                    $("#InputUsername").addClass("is-valid");
+                    $("#InputUsername").addClass("is-valid").removeClass("is-invalid");
 
                 }
             });
-
-            // username.removeClass("is-invalid").addClass("is-valid");
         } else {
             username.addClass("is-invalid").removeClass("is-valid");
+            $("#usernameHelp").removeClass("inpdanger")
         }
     }
+
+    $(".alert").not('.inpdanger').hide();
+    $("#usernameHelp").addClass("alert-secondary").removeClass("alert-success alert-danger").html("你可以使用字母、数字,和下划线");
 
 
 }
