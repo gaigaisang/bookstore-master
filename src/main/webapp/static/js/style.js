@@ -1,41 +1,78 @@
+var email = $("#InputEmail1");
+var username = $("#InputUsername");
+var password = $("#Password1");
+var regpassword = $("#Password2");
 $(function () {
+
     $(".alert").hide();
-//        $("#submitbtn").click(function () {
-//            if (Password2.value != Password1.value) {
-//                $("#registerform").removeAttribute("action");
-//                $("#Password2").popover('show');
-//            } else {
-//                $("#registerform").setAttribute("action", "userregister");
-//                $("#Password2").popover('hide');
-//            }
-//        })
-//
-//
-//        Password2.onblur = function () {
-//            console.log(Password1.value)
-//            console.log(Password2.value)
-//            if (Password2.value != Password1.value) {
-//                $("#Password2").popover('show')
-//            } else (
-//                $("#Password2").popover('hide')
-//            )
-//        }
-//
-});
-function isSave() {
-    $.get("AjaxServlet", {username: $("#InputUsername").val()}, function (isSave) {
-        if (isSave) {
-            $("#InputUsername").addClass("border-danger is-invalid").removeClass("border-success is-valid");
-            $("#usernameHelp").addClass("alert-danger ").removeClass("alert-success").html("用户名已存在");
+    $("#submitbtn").click(function () {
+
+        $("input").each(function () {
+            if ($(this).val() == "") {
+                $(this).addClass("is-invalid");
+            }
+        });
+
+        if (email.hasClass("is-valid") && username.hasClass("is-valid") && password.hasClass("is-valid") && regpassword.hasClass("is-valid") && email.val() != "" && username.val() != "" && password.val() != "" && regpassword.val() != "") {
+            return true;
         } else {
-            $("#usernameHelp").addClass("alert-success").removeClass("alert-danger").html("用户名可用");
-            $("#InputUsername").addClass("border-success").removeClass("border-danger");
+            return false;
         }
-    })
+    });
+});
+
+function isSave() {
+    var usernamereg = /^[a-zA-Z0-9_]{5,20}$/;
+    if (username.val()) {
+        if (usernamereg.test(username.val())) {
+
+            $.get("AjaxServlet", {username: $("#InputUsername").val()}, function (isSave) {
+                if (isSave) {
+                    $("#usernameHelp").addClass("alert-danger inpdanger").removeClass("alert-success").html("用户名已存在");
+                    $("#InputUsername").removeClass("is-valid is-invalid");
+                } else {
+                    $("#usernameHelp").addClass("alert-success").removeClass("alert-danger").html("用户名可用");
+                    $("#InputUsername").addClass("is-valid");
+
+                }
+            });
+
+            // username.removeClass("is-invalid").addClass("is-valid");
+        } else {
+            username.addClass("is-invalid").removeClass("is-valid");
+        }
+    }
+
+
 }
+
 function alertShow(e) {
     console.log(e)
-    $(".alert").hide();
+    $(".alert").not('.inpdanger').hide();
     $(e).parent().find("small").show();
-    $(e).removeClass("is-invalid");
+    var emailreg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+    var passwordreg = /^[a-zA-Z0-9]{8,20}$/;
+
+    if (email.val()) {
+        if (emailreg.test(email.val())) {
+            email.removeClass("is-invalid").addClass("is-valid");
+        } else {
+            email.addClass("is-invalid").removeClass("is-valid");
+        }
+    }
+
+    if (password.val()) {
+        if (passwordreg.test(password.val())) {
+            password.removeClass("is-invalid").addClass("is-valid");
+        } else {
+            password.addClass("is-invalid").removeClass("is-valid");
+        }
+    }
+    if (regpassword.val()) {
+        if (password.val() == regpassword.val()) {
+            regpassword.removeClass("is-invalid").addClass("is-valid");
+        } else {
+            regpassword.addClass("is-invalid").removeClass("is-valid");
+        }
+    }
 }
