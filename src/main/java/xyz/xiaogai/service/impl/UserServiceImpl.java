@@ -89,6 +89,15 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    @Override
+    public List<User> getUserForName(String username) {
+        List<User> users = userDaoImpl.selUser("%"+username+"%");
+        if (users != null) {
+            return users;
+        }
+        return null;
+    }
+
     @Test
     public void test() {
         int size = userDaoImpl.selUser().size();

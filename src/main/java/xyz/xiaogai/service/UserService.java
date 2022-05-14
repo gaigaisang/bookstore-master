@@ -20,6 +20,7 @@ public interface UserService {
     public boolean addUser(User user);
 
     public List<User> getUser(User user);
+    public List<User> getUserForName(String username);
 
 
 }

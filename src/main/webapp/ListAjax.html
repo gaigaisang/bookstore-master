@@ -22,8 +22,8 @@
         <input id="searchUserInp" type="text" class="form-control" placeholder="username" aria-label="username"
                aria-describedby="searchUserBtn">
         <div class="input-group-append">
-            <a class="btn btn-outline-secondary" type="button" id="searchUserBtn" href=""><i
-                    class="bi bi-search"></i></a>
+            <button class="btn btn-outline-secondary" type="button" id="searchUserBtn" href=""><i
+                    class="bi bi-search"></i></button>
         </div>
 
         <table class="table table-hover ">
@@ -45,7 +45,7 @@
         $('#searchUserBtn').click(function () {
             $.get("ListAjaxServlet", {username: $("#searchUserInp").val()}, function (users) {
                 $("#lists").empty();
-                if (users) {
+                if (users.length != 0) {
                     for(user in users) {
                         $("#lists").append("<tr><th scope=\"row\">" + users[user].id + "</th><td>" + users[user].email + "</td><td>" + users[user].username + "</td><td>" + users[user].password + "</td></tr>");
                     }

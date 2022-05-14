@@ -14,6 +14,7 @@ public interface UserDao {
     public User selUserById(int id);
     public List<User> selUser(int index,int size);
     public List<User> selUser();
+    public List<User> selUser(String username);
     public List<User> selPageUser(int index,int size,User user);
 
 }

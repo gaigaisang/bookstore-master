@@ -29,7 +29,7 @@ function isSave() {
             $.get("AjaxServlet", {username: $("#InputUsername").val()}, function (isSave) {
                 if (isSave) {
                     $("#usernameHelp").addClass("alert-danger inpdanger").removeClass("alert-success").html("用户名已存在");
-                    $("#InputUsername").removeClass("is-valid is-invalid");
+                    $("#InputUsername").removeClass("is-valid is-invalid").addClass("border-danger");
                 } else {
                     $("#usernameHelp").addClass("alert-success").removeClass("alert-danger").html("用户名可用");
                     $("#InputUsername").addClass("is-valid").removeClass("is-invalid");

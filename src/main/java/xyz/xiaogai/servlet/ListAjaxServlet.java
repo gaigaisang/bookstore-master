@@ -19,9 +19,8 @@ public class ListAjaxServlet extends HttpServlet {
         String username = request.getParameter("username");
         System.out.println(username);
         if (!username.isEmpty()) {
-            User user = new User(username);
             UserServiceImpl userService = new UserServiceImpl();
-            List<User> users = userService.getUser(user);
+            List<User> users = userService.getUserForName(username);
             if (users!=null) {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.writeValue(response.getOutputStream(), users);

@@ -103,6 +103,20 @@ public class UserDaoImpl implements UserDao {
         return list;
     }
 
+    @Override
+    public List<User> selUser(String username) {
+        String sql = "select * from user where username like ?";
+        List<User> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<User>(User.class), username);
+        return list;
+    }
+    @Test
+    public void test4() {
+        List<User> users = selUser("%j%");
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+
 
     @Override
     public List<User> selUser(int page, int size) {
