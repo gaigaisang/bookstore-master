@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="static/css/bootstrap.css">
+    <script src="static/js/jquery-3.6.0.js"></script>
+    <script src="static/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <title>用户列表</title>
+</head>
+<body>
+<style>
+    #main {
+        width: 60%;
+        /*background-color: #f5f5f5;*/
+        margin: 100px auto 0 auto;
+        text-align: center;
+    }
+</style>
+<div id="main">
+    <div class="input-group mb-3">
+        <input id="searchUserInp" type="text" class="form-control" placeholder="username" aria-label="username"
+               aria-describedby="searchUserBtn">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="searchUserBtn" onclick="selectUser()"><i
+                    class="bi bi-search"></i></button>
+        </div>
+    </div>
+    <!--表格-->
+    <table class="table table-sm table-hover">
+        <thead>
+        <tr class="btn-secondary">
+            <th scope="col"><input type="checkbox" name="" id="checkAll" >全选</th>
+            <th scope="col">id</th>
+            <th scope="col">email</th>
+            <th scope="col">username</th>
+            <th scope="col">password</th>
+            <th scope="col">操作</th>
+        </tr>
+        </thead>
+        <tbody id="tableMain">
+
+        </tbody>
+    </table>
+    <button id="deleteUser" class="btn btn-danger btn-lg float-right" href="#">删除所选</button>
+    <button class="btn btn-primary btn-lg float-left" data-toggle="modal"
+            data-target="#addUserModal" onclick="addUser()">添加
+    </button>
+    <br><br><br>
+
+    <!--分页-->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center" id="totalPage">
+
+        </ul>
+    </nav>
+    <!-- editUserModal -->
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-center modal-title" id="exampleModalLabel1">编辑用户</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-left">
+                    <form>
+                        <div class="form-group">
+                            <label for="editUsername">New Username</label>
+                            <input type="text" class="form-control" name="editUsername" id="editUsername"
+                                   placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="editEmail">New Email address</label>
+                            <input type="email" class="form-control" name="editEmail" id="editEmail"
+                                   aria-describedby="emailHelp">
+                            <small id="emailHelp1" class="form-text text-muted">We'll never share your email with
+                                anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="editPassword">New Password</label>
+                            <input type="text" class="form-control" name="editPassword" id="editPassword">
+                        </div>
+                        <input id="editId" class="invisible" name="editUser">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                            <button id="editBtn" type="submit" class="btn btn-primary">编辑用户</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- addUserModal -->
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-center modal-title" id="exampleModalLabel">添加用户</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-left">
+                    <form>
+                        <div class="form-group">
+                            <label for="addUsername">username</label>
+                            <input type="text" class="form-control" name="addUsername" id="addUsername">
+                        </div>
+                        <div class="form-group">
+                            <label for="addEmail">Email address</label>
+                            <input type="email" class="form-control" name="addEmail" id="addEmail"
+                                   aria-describedby="emailHelp">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                                anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="addPassword">Password</label>
+                            <input type="password" class="form-control" name="addPassword" id="addPassword">
+                        </div>
+                        <input class="invisible" name="addUser" value="1">
+                        <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                            <button id="addUserBtn" type="submit" class="btn btn-primary">添加用户</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="static/js/List.js"></script>
+
+</body>
+</html>
